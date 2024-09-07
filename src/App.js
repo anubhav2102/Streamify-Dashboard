@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { DashboardProvider } from './context/DashboardContext';
+import Dashboard from './pages/Dashboard';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen((prevState) => !prevState);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DashboardProvider>
+      <div className="App flex flex-col h-screen">
+        <Header toggleSidebar={toggleSidebar} />
+        <div className="flex flex-1 overflow-hidden">
+          <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+          <div className="flex-1 overflow-auto p-1 ml-0 md:ml-64">
+            <Dashboard />
+          </div>
+        </div>
+      </div>
+    </DashboardProvider>
   );
 }
 
