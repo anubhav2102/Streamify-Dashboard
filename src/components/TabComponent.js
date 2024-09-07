@@ -7,7 +7,6 @@ const TabComponent = () => {
   const [activeTab, setActiveTab] = useState('streams');
   const [sortColumn, setSortColumn] = useState(null);
   const [sortDirection, setSortDirection] = useState('asc');
-  const [filters, setFilters] = useState({});
   const [tempData, setTempData] = useState([...streams]);
 
   const handleTabChange = (tab) => {

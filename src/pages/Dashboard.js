@@ -20,7 +20,7 @@ const Dashboard = () => {
         for(let i=0;i<adsData.length;i++){
             rev+=(adsData[i].opportunities)*400;
         }
-        return rev;
+        setRevenue('₹'+(rev));
     }
     const calculateTopArtist = () => {
         let artistsData = streams;
@@ -40,16 +40,13 @@ const Dashboard = () => {
                 topArtist = artist;
             }
         }
-    
-        return topArtist;
+        setTopArtist(topArtist);
     };
     
     useEffect(()=> {
-        const revenueTotal = calculateTotalRevenue();
-        const topArtist = calculateTopArtist();
-        setRevenue('₹'+(revenueTotal));
-        setTopArtist(topArtist);
-    }, [])
+        calculateTotalRevenue();
+        calculateTopArtist();
+    })
   return (
     <div className="p-4 md:p-8">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
