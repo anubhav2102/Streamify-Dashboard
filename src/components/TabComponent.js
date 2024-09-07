@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { DashboardContext } from '../context/DashboardContext';
 import Filters from './Filter';
 
-const TabComponent = () => {
+const TabComponent = ({activeTable}) => {
   const { Subscriptions, ads, streams } = useContext(DashboardContext);
   const [activeTab, setActiveTab] = useState('streams');
   const [sortColumn, setSortColumn] = useState(null);
@@ -46,6 +46,17 @@ const TabComponent = () => {
   const handleTempStreams = (d) => {
     setTempData(d);
   }
+
+  useEffect(()=> {
+    if(activeTable){
+        if(activeTable === 'subscriptions'){
+            handleTabChange('subscriptions');
+        }
+        if(activeTable === 'ads'){
+            handleTabChange('ads');
+        }
+    }
+  }, [activeTable])
 
   return (
     <div className="p-4">

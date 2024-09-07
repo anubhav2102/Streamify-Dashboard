@@ -9,6 +9,7 @@ import { DashboardContext } from '../context/DashboardContext';
 const Dashboard = () => {
     const [revenue, setRevenue] = useState('');
     const [TopArtist, setTopArtist] = useState('');
+    const [activeTable, setActiveTable] = useState(null);
     const { ads, Subscriptions, streams } = useContext(DashboardContext);
     const calculateTotalRevenue = () => {
         let SubscriptionsData = Subscriptions;
@@ -42,6 +43,9 @@ const Dashboard = () => {
         }
         setTopArtist(topArtist);
     };
+    const handleSendActiveTable = (d) => {
+        setActiveTable(d);
+    }
     
     useEffect(()=> {
         calculateTotalRevenue();
@@ -59,11 +63,11 @@ const Dashboard = () => {
 
       <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
         <UserGrowthChart />
-        <RevenuePieChart />
+        <RevenuePieChart sendActiveTable={handleSendActiveTable} />
         <TopSongsBarChart />
       </div>
       <div className="mt-8">
-        <TabComponent />
+        <TabComponent activeTable={activeTable}/>
       </div>
     </div>
   );
