@@ -1,3 +1,27 @@
+# Streamify Dashboard
+Visualization and insights for Streamify team on User interaction, product usage, revenue generation, services.
+Tech. Stack - React and TailwindCSS
+
+## Calculations and assumptions
+Data is stored in json  format.
+
+### Revenue
+Calculated as sum of Subscriptions revenue and Ads based revenue.
+Subscriptions Revenue from user wise data and their plan limits.
+Ads Revenue from opportunities from various platforms that are converted multiply by 400.
+
+### User Activity Trend
+Usage list month wise calculated
+
+### Top 5 Songs Streamed
+Storing streams count for each song grouping by users.
+Taking the top 5 from that object.
+
+## Filtering and sorting
+On switching of tabs can switch the table - streaming data, subscription data, ads data.
+Filtering of streaming data based on date wise last streamed, artist and song name with regex matching.
+Sorting of streaming data by clicking on corresponding columns of Song Name, Artist, Date Range.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
